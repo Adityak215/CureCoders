@@ -68,6 +68,17 @@ flutter:
     - assets/goog.png
     - assets/fb.png
     - assets/x.png
+    - assets/doc.png
+    - assets/manag.png
+    - assets/patient.png
+    - assets/appo.png
+    - assets/noos.png
+    - assets/ref.png
+    - assets/emer.png
+    - assets/hel.png
+    - assets/lab.png
+    - assets/gojo.png
+
 
   #   - images/a_dot_ham.jpeg
 

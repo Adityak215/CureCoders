@@ -1,9 +1,10 @@
+import 'package:curecoders/emergency.dart';
 import 'package:flutter/material.dart';
 import 'home.dart';
 import 'package:provider/provider.dart';
 import 'provida.dart';
-import 'login.dart';
-import 'signup.dart';
+import 'userops.dart';
+import 'logins/docsign.dart';
 
 void main() {
   runApp(const MyApp());
@@ -28,7 +29,7 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: const MyHomePage(),
+        home: const  MyHomePage(), //UserOps(),
       ),
     );
   }
@@ -45,7 +46,9 @@ class _MyHomePageState extends State<MyHomePage> {
   
   static const List<Widget> _widgetOptions = <Widget>[
     Patient(),
-    Signup(),
+    DocSignup(),
+    UserOps(),
+    Emergen(),
   ];
   
   @override
@@ -57,27 +60,28 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           
           bottomNavigationBar: BottomNavigationBar(
+             
               currentIndex: value.selectedindex,
               type: BottomNavigationBarType.shifting,
-              items: const [
+              items:  [
                 BottomNavigationBarItem(
-                  activeIcon: Icon(Icons.home),
-                  icon: Icon(Icons.home_outlined),
+                  activeIcon: Icon(Icons.home, color:  const Color.fromARGB(255, 129, 80, 160).withOpacity(0.7),),
+                  icon: const Icon(Icons.home_outlined,color: Colors.grey,),
                   label: 'Home',
                 ),
                 BottomNavigationBarItem(
-                  activeIcon: Icon(Icons.person_add_alt_1_sharp),
-                  icon: Icon(Icons.person_add_alt),
+                  activeIcon: Icon(Icons.person_add_alt_1_sharp, color:  const Color.fromARGB(255, 129, 80, 160).withOpacity(0.7),),
+                  icon: const Icon(Icons.person_add_alt,color: Colors.grey,),
                   label: 'Nearby',
                 ),
                 BottomNavigationBarItem(
-                  activeIcon: Icon(Icons.schedule_outlined),
-                  icon: Icon(Icons.schedule_sharp),
+                  activeIcon: Icon(Icons.schedule_outlined, color:  const Color.fromARGB(255, 129, 80, 160).withOpacity(0.7),),
+                  icon: const Icon(Icons.schedule_sharp,color: Colors.grey,),
                   label: 'Scheduled',
                 ),
                 BottomNavigationBarItem(
-                  activeIcon: Icon(Icons.emergency),
-                  icon: Icon(Icons.emergency_outlined),
+                  activeIcon: Icon(Icons.emergency, color:  const Color.fromARGB(255, 129, 80, 160).withOpacity(0.7),),
+                  icon: const Icon(Icons.emergency_outlined,color: Colors.grey,),
                   label: 'Emergency',
                 ),
               ],

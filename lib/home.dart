@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'customclip.dart';
+import 'resourses.dart';
 
 class Patient extends StatefulWidget {
   const Patient({super.key, });
@@ -21,73 +23,55 @@ class _PatientState extends State<Patient> {
    
     return Scaffold(
       
-      appBar: AppBar(
-        toolbarHeight: 90,
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary.withOpacity(0.2),
-        title: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  
-                  InkWell(
-                    onTap: () {
-                      //_alertdialog(context);
-                    },
-                    splashColor: Theme.of(context).colorScheme.primary.withOpacity(0.2),
-                    borderRadius: BorderRadius.circular(20),
-                    child: Container(
-                          width: 71,
-                          height: 71,
-                          decoration: const ShapeDecoration(
-                            image: DecorationImage(
-                              image: NetworkImage("https://via.placeholder.com/71x71"),
-                              fit: BoxFit.contain,
-                            ),
-                            shape: OvalBorder(
-                              side: BorderSide(
-                                width: 2,
-                                strokeAlign: BorderSide.strokeAlignOutside,
-                              ),
-                            ),
-                          ),
-                        ),
-                    
-                  ),
-                    // Text('data'),
-                    // Builder(
-                    //   builder: (BuildContext context) {
-                    //     return IconButton(
-                    //         icon: const Icon(Icons.menu),
-                    //         onPressed: () {
-                    //           // Open the end drawer when the button is pressed
-                    //           Scaffold.of(context).openEndDrawer();
-                    //         },
-                    //       );
-                    //   }
-                    // ),
-                  ]
-          ),
-        ),
-      ),
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
-        child: Padding(
+        child: Stack(
+          children: [
+            
+            ClipPath(
+              clipper: DefaultClipEnd(), // Use the custom clipper
+              child: Container(
+                height: 600, // Make the curved section fill the screen height
+                color: const Color.fromARGB(255, 129, 80, 160), // Color of the curved section
+                
+              ),
+            ),
+            ClipPath(
+              clipper: DefaultClipPath(), // Use the custom clipper
+              child: Container(
+                height: 350, // Make the curved section fill the screen height
+                color: (Colors.white), // Color of the curved section
+                
+              ),
+            ),
+            Padding(
           padding: const EdgeInsets.all(25.0),
       
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             //mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
+              const SizedBox(height: 45,),
+
+              topstuff(sear),
+              
               const SizedBox(height: 25,),
-              // Row(
-                
-              //   ),
               const Text.rich(
               TextSpan(
                 children: [
+                  
                   TextSpan(
-                    text: 'Hello,\n',
+                    text: 'Hello, {Name}!\n',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 28,
+                      //fontFamily: 'Inter',
+                      fontWeight: FontWeight.w800,
+                      //height: 0.03,
+                    ),
+                  ),
+                  TextSpan(
+                    text: 'You\'re in {Location}\n',
                     style: TextStyle(
                       color: Colors.black,
                       fontSize: 24,
@@ -96,90 +80,95 @@ class _PatientState extends State<Patient> {
                       //height: 0.04,
                     ),
                   ),
-                  
-                  TextSpan(
-                    text: 'CureCoders 🩺',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 32,
-                      //fontFamily: 'Inter',
-                      fontWeight: FontWeight.w800,
-                      //height: 0.03,
-                    ),
-                  ),
                 ],
               ),
             ),
            Container(
+            height: 250,
             decoration: ShapeDecoration(
-                    color: const Color(0xFFD9D9D9),
+                    color: const Color(0xFFD9D9D9).withOpacity(0.3),
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(17),
+                      borderRadius: BorderRadius.circular(50),
                     ),
                   ),
               child:  Padding(              
                 padding: const EdgeInsets.all(16),
-                  child: Column(
-                    children: [
+                  child: 
                       Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          const Text.rich(
-                              TextSpan(
-                                children: [
-                                  TextSpan(
-                                    text: 'Hello,\n',
-                                    style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 16,
-                                      //fontFamily: 'Inter',
-                                      fontWeight: FontWeight.w400,
-                                      //height: 0.04,
-                                    ),
-                                  ),
-                                  
-                                  TextSpan(
-                                    text: 'CureCoders 🩺',
-                                    style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 24,
-                                      //fontFamily: 'Inter',
-                                      fontWeight: FontWeight.w800,
-                                      //height: 0.03,
-                                    ),
-                                  ),
-                                ],
-                              ),
+                            Column(
+                              children: [
+                                SizedBox(
+                                  height: 85,
+                                  width: 85,
+                                  child: Image.asset('assets/appo.png')),
+                                  const Text('Appointments',
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold
+                                  ),),
+                                  SizedBox(
+                                  height: 85,
+                                  width: 85,
+                                  child: Image.asset('assets/hel.png')),
+                                  const Text('Helpline',
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold
+                                  ),)
+                              ],
                             ),
-                            SizedBox(
-                              height: 138,
-                              width: 163,
-                              child: Image.asset('assets/image_2023-09-23_14-07-17.png')),
+                            Column(
+                              children: [
+                                SizedBox(
+                                  height: 85,
+                                  width: 85,
+                                  child: Image.asset('assets/emer.png')),
+                                  const Text('Emergency',
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold
+                                  ),),
+                                  SizedBox(
+                                  height: 85,
+                                  width: 85,
+                                  child: Image.asset('assets/ref.png')),
+                                  const Text('Referrals',
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold
+                                  ),)
+                              ],
+                            ),
+                            Column(
+                              children: [
+                                SizedBox(
+                                  height: 85,
+                                  width: 85,
+                                  child: Image.asset('assets/lab.png')),
+                                  const Text('Lab Tests',
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold
+                                  ),),
+                                  SizedBox(
+                                  height: 85,
+                                  width: 85,
+                                  child: Image.asset('assets/noos.png')),
+                                  const Text('Local Med News',
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold
+                                  ),)
+                              ],
+                            ),
                         ],
                       ),
-      
-                      SizedBox(
-                        height: 40,
-                        child:  TextFormField(
-                            controller: sear,
-                            decoration:  const InputDecoration(
-                              border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(50.0))),
-                              prefixIcon: Icon(Icons.search),
-                              hintText: 'Enter Your Username',
-                              labelText: "Username",
-                            ),
-                          ),
-                       
-                      ),
-                    ],
-                  ),
                   //height: 200,
                   
                 ),
             ),
-      
+            const SizedBox(height: 20,),
             Column(
+              //mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text('What do you need help with Today?',
+                const Text('Specialties',
                 style: TextStyle(
                                       color: Colors.black,
                                       fontSize: 24,
@@ -187,93 +176,201 @@ class _PatientState extends State<Patient> {
                                       fontWeight: FontWeight.w800,
                                       //height: 0.03,
                                     ),),
+                const SizedBox(height: 10,),
                 SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   child: Row(
                     children: <Widget> [
-                      Ink(
-                        decoration: const ShapeDecoration(
-                            color: Colors.transparent,
-                            shape: CircleBorder(),
+                      
+                      Container(height: 90,width: 90,
+                        decoration: BoxDecoration(
+                           color: const Color.fromARGB(255, 129, 80, 160).withOpacity(0.5),
+                            borderRadius: BorderRadius.circular(30.0), // Set the border radius
                           ),
                         child: InkWell(
-                          borderRadius: BorderRadius.circular(10),
                           onTap: () {
                             
                           },
-                          child: Column(
-                            children: [
-                              Image.asset('assets/fulbod.png', height:125 ,width: 125,),
-                              const Text('Full Body\nCheck-up',),
-                            ],
-                          ),
-                        ),
+                          borderRadius: BorderRadius.circular(30),
+                          child: const Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                           children: [
+                            Icon(Icons.heart_broken),
+                             //Image.asset('assets/pedia.png', height:125 ,width: 125,),
+                             Text('Cardio')
+                           ],
+                        )),
                       ),
-                      InkWell(
-                        onTap: () {
-                          
-                        },
-                        borderRadius: BorderRadius.circular(10),
-                        child: Column(
-                         children: [
-                           Image.asset('assets/pedia.png', height:125 ,width: 125,),
-                           const Text('Pediatrician')
-                         ],
-                      )),
-                      InkWell(
-                        onTap: () {
-                          
-                        },
-                        borderRadius: BorderRadius.circular(10),
-                        child: Column(
-                         children: [
-                           Image.asset('assets/blood.png', height:125 ,width: 125,),
-                           const Text('Blood Test')
-                         ],
-                      )),
+                      const SizedBox(width: 10,),
+                      Container(height: 90,width: 90,
+                        decoration: BoxDecoration(
+                           color: const Color.fromARGB(255, 129, 80, 160).withOpacity(0.5),
+                            borderRadius: BorderRadius.circular(30.0), // Set the border radius
+                          ),
+                        child: InkWell(
+                          onTap: () {
+                            
+                          },
+                          borderRadius: BorderRadius.circular(30),
+                          child: const Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                           children: [
+                            Icon(Icons.bloodtype),
+                             //Image.asset('assets/pedia.png', height:125 ,width: 125,),
+                             Text('Hematology')
+                           ],
+                        )),
+                      ),
+                      const SizedBox(width: 10,),
+
+                      Container(height: 90,width: 90,
+                        decoration: BoxDecoration(
+                           color: const Color.fromARGB(255, 129, 80, 160).withOpacity(0.5),
+                            borderRadius: BorderRadius.circular(30.0), // Set the border radius
+                          ),
+                        child: InkWell(
+                          onTap: () {
+                            
+                          },
+                          borderRadius: BorderRadius.circular(30),
+                          child: const Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                           children: [
+                            Icon(Icons.accessibility_new),
+                             //Image.asset('assets/pedia.png', height:125 ,width: 125,),
+                             Text('Check-Up')
+                           ],
+                        )),
+                      ),
+                      const SizedBox(width: 10,),
+
+                      Container(height: 90,width: 90,
+                        decoration: BoxDecoration(
+                           color: const Color.fromARGB(255, 129, 80, 160).withOpacity(0.5),
+                            borderRadius: BorderRadius.circular(30.0), // Set the border radius
+                          ),
+                        child: InkWell(
+                          onTap: () {
+                            
+                          },
+                          borderRadius: BorderRadius.circular(30),
+                          child: const Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                           children: [
+                            Icon(Icons.add_business),
+                             //Image.asset('assets/pedia.png', height:125 ,width: 125,),
+                             Text('Prescription')
+                           ],
+                        )),
+                      ),
+                      const SizedBox(width: 10,),
+
+                      Container(height: 90,width: 90,
+                        decoration: BoxDecoration(
+                           color: const Color.fromARGB(255, 129, 80, 160).withOpacity(0.5),
+                            borderRadius: BorderRadius.circular(30.0), // Set the border radius
+                          ),
+                        child: InkWell(
+                          onTap: () {
+                            
+                          },
+                          borderRadius: BorderRadius.circular(30),
+                          child: const Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                           children: [
+                            Icon(Icons.assist_walker_outlined),
+                             //Image.asset('assets/pedia.png', height:125 ,width: 125,),
+                             Text('Senior\nCitizen')
+                           ],
+                        )),
+                      ),
+                      const SizedBox(width: 10,),
+
+                      Container(height: 90,width: 90,
+                        decoration: BoxDecoration(
+                           color: const Color.fromARGB(255, 129, 80, 160).withOpacity(0.5),
+                            borderRadius: BorderRadius.circular(30.0), // Set the border radius
+                          ),
+                        child: InkWell(
+                          onTap: () {
+                            
+                          },
+                          borderRadius: BorderRadius.circular(30),
+                          child: const Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                           children: [
+                            Icon(Icons.auto_fix_off_outlined),
+                             //Image.asset('assets/pedia.png', height:125 ,width: 125,),
+                             Text('Rehab')
+                           ],
+                        )),
+                      ),
+
                     ],
                              
                   ),
                 ),
+                const SizedBox(height: 20,),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text('Hospitals Near You',
+                          style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 24,
+                                      //fontFamily: 'Inter',
+                                      fontWeight: FontWeight.w800,
+                                      //height: 0.03,
+                                    ),),
+                      SizedBox(
+                        // height: 50, width: 50,
+                        child: ElevatedButton(onPressed: () {
+                          //filter
+                        },
+                        child: const Icon(Icons.filter_alt_outlined))),
+                  ],
+                ),
+                const SizedBox(height: 15,),
+                  Hosdetail1(context),
+                  const SizedBox(height: 10,),
+                  Hosdetail2(),
+                  const SizedBox(height: 10,),
+                  Hosdetail3(),
+                  const SizedBox(height: 10,),
+                  Hosdetail4(),
+
+
               ],
             ),
             ],
           ),
         ),
+      ]),
       ),
-      endDrawer: Drawer(
-        child: ListView(
-          padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
-          children: [
-            DrawerHeader(
-              decoration: BoxDecoration(color: Theme.of(context).colorScheme.inversePrimary,),
-              child: const Text('Drawer for Stuff')),
-          ],
-        ),
-      ),
+      drawer: sidebar(context)
     );
   }
 }
 
 
-void _alertdialog(BuildContext context) {
-  showDialog(
-    context: context,
-    builder: (BuildContext context) {
-      return AlertDialog(  
-                backgroundColor: Colors.white,
-                title: const Text('Check Capslock, Spelling and Whitespace'),
-                content: const Text('Wrong Subreddit will not load anything'),
-                actions: <Widget>[
-                  TextButton(
-                    onPressed: (){
-                       Navigator.of(context).pop();
-                    }
-                  , child: const Text('OK'))
-                ],
-           );
-    },
-  );
-}
+// void _alertdialog(BuildContext context) {
+//   showDialog(
+//     context: context,
+//     builder: (BuildContext context) {
+//       return AlertDialog(  
+//                 backgroundColor: Colors.white,
+//                 title: const Text('Check Capslock, Spelling and Whitespace'),
+//                 content: const Text('Wrong Subreddit will not load anything'),
+//                 actions: <Widget>[
+//                   TextButton(
+//                     onPressed: (){
+//                        Navigator.of(context).pop();
+//                     }
+//                   , child: const Text('OK'))
+//                 ],
+//            );
+//     },
+//   );
+// }
 
 

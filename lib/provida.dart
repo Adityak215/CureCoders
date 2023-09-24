@@ -24,13 +24,13 @@ class Boolprovider with ChangeNotifier
   {
     _passwordVisible=!_passwordVisible;
     notifyListeners();
-    print('toggled password');
+    //print('toggled password');
   }
 
   void setkey()
   {
     _showkey=!_showkey;
     notifyListeners();
-    print('toggled showkey');
+    //print('toggled showkey');
   }
 }
