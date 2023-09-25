@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'provida.dart';
 import 'userops.dart';
 import 'logins/docsign.dart';
+import 'getstarted.dart';
 
 void main() {
   runApp(const MyApp());
@@ -29,7 +30,7 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: const  MyHomePage(), //UserOps(),
+        home: const  GetStarted(),//MyHomePage(), //UserOps(),
       ),
     );
   }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../customclip.dart';
 import 'package:provider/provider.dart';
+import '../main.dart';
 import '../provida.dart';
 import 'doclog.dart';
 
@@ -207,7 +208,10 @@ class _DocSignupState extends State<DocSignup> {
                             height: 50, width: 200,
                             child: ElevatedButton.icon(
                               onPressed: () {
-                                
+                                Navigator.push(context,
+                                  MaterialPageRoute(
+                                  builder: (context) => const MyHomePage()),
+                                );
                               }, 
                             icon: const Icon(Icons.arrow_forward,
                               color: Colors.black), 

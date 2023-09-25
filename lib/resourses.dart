@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:curecoders/logins/signup.dart';
 import 'package:curecoders/userops.dart';
 import 'package:flutter/material.dart';
@@ -295,8 +297,8 @@ Drawer sidebar(context)
                               Navigator.pop(context);
                             },
                           ),
-                          SizedBox(width: 20,),
-                          Text('{Name}',
+                          const SizedBox(width: 20,),
+                          const Text('{Name}',
                           style: TextStyle(
                             fontWeight: FontWeight.w600,
                             fontSize: 20,

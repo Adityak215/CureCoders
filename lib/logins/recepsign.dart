@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../customclip.dart';
 import 'package:provider/provider.dart';
+import '../main.dart';
 import '../provida.dart';
 import 'receplog.dart';
 
@@ -158,34 +159,18 @@ class _RecepSignupState extends State<RecepSignup> {
                               );
                         },),
       
-                        const SizedBox(height: 25,),
-                        Center(
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            //crossAxisAlignment: CrossAxisAlignment.end,
-                            children: [
-                              SizedBox(
-                                height: 25, width: 25,
-                                child: Image.asset('assets/goog.png')),
-                                const SizedBox(width: 40,),
-                              SizedBox(
-                                height: 25, width: 25,
-                                child: Image.asset('assets/fb.png')),
-                                const SizedBox(width: 40,),
-                              SizedBox(
-                                height: 25, width: 25,
-                                child: Image.asset('assets/x.png')),
-                              
-                            ],
-                          ),
-                        ),
+                        
+                        
                         const SizedBox(height: 25,),
                         Center(
                           child: SizedBox(
                             height: 50, width: 200,
                             child: ElevatedButton.icon(
                               onPressed: () {
-                                
+                                Navigator.push(context,
+                                  MaterialPageRoute(
+                                  builder: (context) => const MyHomePage()),
+                                );
                               }, 
                             icon: const Icon(Icons.arrow_forward,
                               color: Colors.black), 
