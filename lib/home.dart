@@ -196,7 +196,7 @@ class _PatientState extends State<Patient> {
                             mainAxisAlignment: MainAxisAlignment.center,
                            children: [
                             Icon(Icons.heart_broken),
-                             //Image.asset('assets/pedia.png', height:125 ,width: 125,),
+                             
                              Text('Cardio')
                            ],
                         )),
@@ -216,7 +216,7 @@ class _PatientState extends State<Patient> {
                             mainAxisAlignment: MainAxisAlignment.center,
                            children: [
                             Icon(Icons.bloodtype),
-                             //Image.asset('assets/pedia.png', height:125 ,width: 125,),
+                             
                              Text('Hematology')
                            ],
                         )),
@@ -237,7 +237,7 @@ class _PatientState extends State<Patient> {
                             mainAxisAlignment: MainAxisAlignment.center,
                            children: [
                             Icon(Icons.accessibility_new),
-                             //Image.asset('assets/pedia.png', height:125 ,width: 125,),
+                            
                              Text('Check-Up')
                            ],
                         )),
@@ -258,7 +258,7 @@ class _PatientState extends State<Patient> {
                             mainAxisAlignment: MainAxisAlignment.center,
                            children: [
                             Icon(Icons.add_business),
-                             //Image.asset('assets/pedia.png', height:125 ,width: 125,),
+
                              Text('Prescription')
                            ],
                         )),
@@ -279,7 +279,7 @@ class _PatientState extends State<Patient> {
                             mainAxisAlignment: MainAxisAlignment.center,
                            children: [
                             Icon(Icons.assist_walker_outlined),
-                             //Image.asset('assets/pedia.png', height:125 ,width: 125,),
+                           
                              Text('Senior\nCitizen')
                            ],
                         )),
@@ -300,7 +300,7 @@ class _PatientState extends State<Patient> {
                             mainAxisAlignment: MainAxisAlignment.center,
                            children: [
                             Icon(Icons.auto_fix_off_outlined),
-                             //Image.asset('assets/pedia.png', height:125 ,width: 125,),
+                            
                              Text('Rehab')
                            ],
                         )),
@@ -330,7 +330,7 @@ class _PatientState extends State<Patient> {
                         child: const Icon(Icons.filter_alt_outlined))),
                   ],
                 ),
-                const SizedBox(height: 15,),
+                  const SizedBox(height: 15,),
                   Hosdetail1(context),
                   const SizedBox(height: 10,),
                   Hosdetail2(),
