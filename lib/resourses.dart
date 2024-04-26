@@ -242,7 +242,7 @@ Row topstuff(sear)
                     ),
                     const SizedBox(width: 10,),
                     SizedBox(
-                        height: 65, width: 270,
+                        height: 64, width: 250,
                         //child: SearchBar(),
                         child: TextFormField(
                         
